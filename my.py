@@ -1,25 +1,27 @@
+class Wallet:
+    def __init__(self, owner, balance = 0, valuta = "GRN"):
+        self.owner = owner
+        self.balance = balance
+        self.valuta = valuta
+
+    def add_money(self, amount):
+        self.balance += amount
+        print(self.balance)
 
 
-while True:
-    num1 = float(input("num1= "))
-    num2 = float(input("num2= "))
-    operation = input("operation= ")
+    def spend_money(self, amount):
+        if self.balance >= amount:
+           self.balance -= amount
+        print(self.balance)
 
-    def calc(num1, num2, operation):
-        if operation == "+":
-           return num1 + num2
-        elif operation == "-":
-           return num1 - num2
-        elif operation == "*":
-           return num1 * num2
-        elif operation == "/":
-           return num1 / num2
-        else:
-            print("Error")
+    def convert(self, newValuta, kurs):
+        self.valuta == newValuta
+        self.balance = self.balance * kurs
+        print(f"owner = {self.owner}\n balance = {self.balance}\n valuta {self.valuta}")
 
-print(calc(num1, num2,operation))
-
-if operation == "0":
-    print("Error")
-
-
+b = Wallet("Ivan",100, "GRN")
+b.add_money(100)
+print(b.add_money)
+b.spend_money(50)
+print(b.spend_money)
+b.convert("grn", 50)
