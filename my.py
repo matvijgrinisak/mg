@@ -1,27 +1,37 @@
-class Wallet:
-    def __init__(self, owner, balance = 0, valuta = "GRN"):
-        self.owner = owner
-        self.balance = balance
-        self.valuta = valuta
+class Product:
+    def __init__(self, name = "None", price = 0):
+        self.name = name
+        self.price = price
+    def info(self):
+        print(f"name - {self.name}\ price - {self.price} грн")
 
-    def add_money(self, amount):
-        self.balance += amount
-        print(self.balance)
+class Customer:
+    def __init__(self, name = "Ігор", cart = []):
+        self.name = name
+        self.cart = cart
+    def add_to_cart(self, obj: Product):
+        self.cart.append(obj)
+    def show_cart(self):
+        total_price = 0
+        print(f"покупець - {self.name}")
+        for i in self.cart:
+            print("додано до кошика:", i.name, i.price)
+            total_price += i.price
+        print("загальна вартість", total_price)
+d = Product("fsfqev", 200)
+d1 = Product("fewvew", 230)
+d2 = Product("fembjw", 180)
+d3 = Product("kvjiis", 150)
+d.info()
+d1.info()
+d2.info()
+d3.info()
+r = Customer()
+r.add_to_cart(d)
+r.add_to_cart(d1)
+r.add_to_cart(d2)
+r.add_to_cart(d3)
+r.show_cart()
 
 
-    def spend_money(self, amount):
-        if self.balance >= amount:
-           self.balance -= amount
-        print(self.balance)
 
-    def convert(self, newValuta, kurs):
-        self.valuta == newValuta
-        self.balance = self.balance * kurs
-        print(f"owner = {self.owner}\n balance = {self.balance}\n valuta {self.valuta}")
-
-b = Wallet("Ivan",100, "GRN")
-b.add_money(100)
-print(b.add_money)
-b.spend_money(50)
-print(b.spend_money)
-b.convert("grn", 50)
